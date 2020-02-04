@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block main %}
+<section class="profile-section">
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-img-container">
+                <img src="{{url_for('static', filename='profilepic.jpg')}}" alt="">
+            </div>
+            <div class="profile-header-info">
+                <h1>Domonique Eccleston</h1>
+                <h2>@domonikk</h2>
+                <h2>Kingston, Jamaica</h2>
+                <h2>{{date_joined}}</h2>
+            </div>
+        </div>
+        <div class="profile-body">
+            <p>
+                I am a vibrant and fun loving youg woman who 
+                dabbles in website design and development. 
+                Contact me if you'd like to work together 
+                on a new project.
+            </p>
+            <ul>
+                <li>
+                    <span class="value">21</span>
+                    <span>Posts</span>
+                </li>
+                <li>
+                    <span class="value">8</span>
+                    <span>Following</span>
+                </li>
+                <li>
+                    <span class="value">2.5 M</span>
+                    <span>Followers</span>
+                </li>
+            </ul>
+            <button class="button-follow">Follow</button>
+        </div>
+    </div>
+</section> 
+{% endblock %}

@@ -3,10 +3,12 @@ Flask Documentation:     http://flask.pocoo.org/docs/
 Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
-"""
+""" 
 
+import datetime
 from app import app
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash 
+
 
 
 ###
@@ -22,12 +24,16 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
-
+    return render_template('about.html', name="Mary Jane") 
+    
+@app.route('/profile') 
+def profile():
+    """ Render the webiste's profile page.""" 
+    return render_template ('profile.html', date_joined= format_date_joined(2020, 2, 3))
 
 ###
 # The functions below should be applicable to all Flask apps.
-###
+### 
 
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):
@@ -51,8 +57,16 @@ def add_header(response):
 @app.errorhandler(404)
 def page_not_found(error):
     """Custom 404 page."""
-    return render_template('404.html'), 404
+    return render_template('404.html'), 404  
 
+
+def format_date_joined(year, month, day):   
+    """
+    The function below takes a date as agrument and return it in the format (MM,YYYY). 
+    """  
+    now = datetime.datetime.now()
+    date_joined = datetime.date(year, month, day) 
+    return "Joined " + now.strftime ("%B, %Y")
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port="8080")
